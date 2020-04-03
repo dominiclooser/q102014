@@ -317,7 +317,7 @@ module.exports = (grunt) ->
             # base = path.parse(pagePath).base
             
 
-    grunt.registerTask 'build', ['responsive_images', 'pug', 'stylus', 'coffee', 'copy:static', 'strip-extensions']
+    grunt.registerTask 'build', ['make-dirs', 'responsive_images', 'pug', 'stylus', 'coffee', 'copy:static', 'strip-extensions']
     grunt.registerTask 'default', ['build', 'watch']
     grunt.registerTask 'deploy', ['clean', 'make-dirs', 'build', 'copy:production', 'gh-pages:production']
     grunt.registerTask 'stage', ['clean-build','copy:stage', 'gh-pages:stage']
