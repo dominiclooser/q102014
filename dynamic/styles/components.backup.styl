@@ -1,0 +1,209 @@
+    ////////////
+// layout //
+////////////
+
+.fullscreen
+    position: absolute
+    height: 100vh
+    width: 100vw
+    z-index: 1
+    top: 0
+    left: 0
+
+.center-wrapper
+    margin: 0 auto
+    padding-left: var(--page-padding)
+    padding-right: @padding-left
+    max-width: max-page-width
+
+.fullwidth-wrapper
+    padding: 0 var(--page-padding)
+
+.text-wrapper
+    max-width: max-text-width
+
+grid(min-column-width = 100px, gap = var(--unit))
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(min-column-width, 1fr ))
+    grid-column-gap: gap
+    grid-row-gap: gap
+
+.textplus
+    @media textplus
+        display: flex
+
+.textplus-text
+    flex-basis: 50%
+    max-width: max-text-width
+    @media textplus
+        margin-right: var(--unit)
+
+.textplus-plus
+    flex-basis: 50%
+    margin-top: var(--unit)
+    align-self: left
+    @media textplus
+        margin: 0
+
+.plustext
+    @media textplus
+        display: flex
+
+.plustext-text
+    max-width: max-text-width
+    margin: var(--unit) 0 0 0
+    @media textplus
+        margin: 0 0 0 var(--unit)
+
+.plustext-plus
+    align-self: left
+
+.default-columns
+    columns: 200px
+    column-gap: var(--semi-unit)
+    *
+        margin-bottom: var(--semi-unit)
+
+
+//////////
+// text // 
+//////////
+
+.spaced-paragraphs 
+    p+p
+        margin-top: var(--semi-unit) 
+
+.indented-paragraphs 
+    p+p
+        text-indent: var(--unit)
+
+///////////
+// links //
+///////////
+
+.arrow
+    &::before
+        content: '\2192'
+        margin-right: 0.3em
+        display: inline-block
+        
+.arrow-links a
+    @extends .arrow
+
+.color-links a
+    color: link-color
+
+.underlined
+    text-decoration: underline
+
+.underlined-links 
+    a
+        @extends .underlined
+
+.underlined-on-hover
+    &:hover
+        text-decoration: underline
+
+.underlined-on-hover-links 
+    a
+        @extends .underlined-on-hover
+
+.color-on-hover-links 
+    a:hover
+        color: link-color
+
+
+///////////
+// lists //
+///////////
+
+.default-list
+    list-style-type: disc
+    list-style-position: inside
+    li + li
+        margin-top: var(--semi-unit)
+
+.arrow-list
+    list-style: none
+    li
+        display: flex
+    li:before
+        content: '\2192 \a0'        
+
+vlist(spacing=var(--semi-unit), border='1px dotted dark')
+    list-style: none
+    padding: 0
+    li  
+        padding: spacing 0 
+        border-bottom: border
+        &:last-child
+            border-bottom: none
+
+hlist(sep = '', spacing-left = 0.5em, spacing-right = 0.5em)
+    list-style: none
+    margin: 0
+    li 
+        display: inline
+    li:not(:last-child)
+        &::after
+            margin-left: spacing-left
+            margin-right: spacing-right
+            content: sep
+    li:not(:first-child)
+        margin-left: spacing-left
+
+.comma-list
+    hlist(', ', 0, 0)
+
+highlight-list(background = dark, color = white)
+    li:hover
+        background: background
+        color: color
+        cursor: pointer
+    a:hover
+        color: inherit
+    a
+        text-decoration: none
+
+striped-list(color)
+    li
+        padding: var(--semi-unit)
+    li:nth-child(2n+1)
+
+        background-color: color
+
+dl(row-gap=var(--semi-unit), term-width=max-content, weight=bold)
+    display: grid
+    grid-template-columns: term-width auto
+    grid-row-gap: row-gap
+    grid-column-gap: 0.5em
+    dt  
+        font-weight: weight
+    dd
+        ul
+            line-height: 1.5
+        li::before
+            content: '–'
+            margin-right: 0.5em
+
+.dl
+    dl()
+
+
+//////////
+// misc //
+//////////
+
+.video-wrapper
+    position: relative
+    padding-bottom: 50% //56.25%
+    padding-top: 25px
+    height: 0
+    iframe
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+
+
