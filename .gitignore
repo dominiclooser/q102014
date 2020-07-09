@@ -1,2 +1,5 @@
 # Local Netlify folder
+.netlifyout
+node_modules/
+out
 .netlify

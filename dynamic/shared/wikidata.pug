@@ -1,0 +1,30 @@
+mixin item(data, lang=global.settings.lang)
+   if ! data
+      return ''
+   if typeof data == 'string' 
+      if data.startsWith('Q')
+         button.show-item(data-id=data): wd-entity(id=data, label, lang=lang)
+      else
+         = data
+   else if data.label 
+      = data.label
+   else if data.title
+      if data.link
+         a(href=data.link)= data.title
+      else
+         = data.title
+         
+
+mixin label(item, lang=global.settings.lang)
+   if typeof item == 'string' 
+      if item.startsWith('Q')
+         wd-entity(id=item, label, lang=lang)
+      else
+         = item
+   else if item.wikidata_id
+      wd-entity(id=item.wikidata_id, label, lang=lang)
+   else if item.id
+      = item.id
+   
+   script(src='https://unpkg.com/wikidata-elements@0.1.0/dist/wd-elements.umd.js')
+   
