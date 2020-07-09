@@ -3,11 +3,22 @@ include /sections
 
 block content
    .wrapper
-      .page-heading
-         h1.page-title Q102014
-         p.page-subtitle Data Enriched Publishing
-      .page-main
-         .usecase1 We recommend using Visual Studio Code
-
+      .site-heading
+         h1.site-title Data Enriched Publishing
+         p.site-subtitle Enrich Websites with Wikidata
+         
+      .page-main.spacy-links
+         
+         +section('Use Cases')
+         
          +section('Implementation')
-            +subsection('Syntax')
+            ul.default-list
+               li 
+                  a(href='https://wikidata-elements.js.org/') wikidata-elements 
+                  span  (Web components for embedding Wikidata into a website)
+               li: a(href='https://en.wikipedia.org/wiki/Template:Wikidata') Wikidata in Wikipedia 
+
+         +section('Team')
+            ul.default-list
+               li: a(href='https://notimportant.org') Li Song
+               li: a(href='https://dominiclooser.ch') Dominic Looser

@@ -1,20 +1,39 @@
 .wrapper
     @extends .center-wrapper
 
+.spacy-link
+    display: inline-block
+    position: relative
+    text-decoration: none
+    color: inherit
+    z-index: 1
+
+    &::after 
+        content: ''
+        position: absolute
+        left: 0
+        bottom: .07em
+        height: .15em
+        width: 100%
+        // background: linear-gradient(110deg, #e1f549, #29d0be, #6cb8ea, #ff5959)
+        background: linear-gradient(110deg, primary, secondary, tertiary)
+        z-index: -1
+        transition: height .25s cubic-bezier(.6,0,.4,1)
+
+    &:hover::after 
+        height: .2em
+
+.spacy-links
+    a 
+        @extends .spacy-link
+
+
 .page-header
     margin: var(--two-units) 0 var(--unit) 0
 
 .page-heading
     margin-top: var(--six-units)
     text-align: center
-
-.page-title
-    font-size: var(--xxxl)
-    font-weight: 900
-    color: primary
-    display: inline-block
-    line-height: 1
-    border-bottom: 6px solid currentColor
 
 .page-subtitle
     margin-top: var(--semi-unit)
@@ -28,7 +47,13 @@
     font-size: var(--s)
 
 .s1 + .s1
-    margin-top: var(--unit)
+    margin-top: var(--two-units)
+
+.s1-header + .s1-main
+    margin-top: var(--semi-unit)
+
+.s2-header + .s2-main
+    margin-top: var(--quarter-unit)
 
 .h1
     font-size: var(--xl)

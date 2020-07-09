@@ -5,8 +5,9 @@
 .fullscreen
     position: absolute
     height: 100vh
+    height: calc(var(--vh, 1vh) * 100)
     width: 100vw
-    z-index: 1
+    z-index: 2
     top: 0
     left: 0
 
@@ -24,9 +25,8 @@
 
 grid(min-column-width = 100px, gap = var(--unit))
     display: grid
-    grid-template-columns: repeat(auto-fit, minmax(min-column-width, 1fr ))
-    grid-column-gap: gap
-    grid-row-gap: gap
+    grid-template-columns: repeat(auto-fill, minmax(min-column-width, 1fr))
+    gap: gap
 
 .textplus
     @media textplus
@@ -58,7 +58,7 @@ grid(min-column-width = 100px, gap = var(--unit))
 .plustext-plus
     align-self: left
 
-.default-columns
+.image-columns
     columns: 200px
     column-gap: var(--semi-unit)
     *
@@ -81,16 +81,42 @@ grid(min-column-width = 100px, gap = var(--unit))
 // links //
 ///////////
 
+.rainbow
+    display: inline-block
+    position: relative
+    text-decoration: none
+    color: inherit
+    z-index: 1
+
+    &::after 
+        content: ''
+        position: absolute
+        left: 0
+        bottom: .07em
+        height: .1em
+        width: 100%
+        background: linear-gradient(110deg, #e1f549, #29d0be, #6cb8ea, #ff5959)
+        z-index: -1
+        transition: height .25s cubic-bezier(.6,0,.4,1)
+
+    &:hover::after 
+        height: .2em
+
+.rainbow-links 
+    a
+        @extends .rainbow
+
 .arrow
     &::before
         content: '\2192'
         margin-right: 0.3em
         display: inline-block
         
-.arrow-links a
-    @extends .arrow
+.arrow-links
+    a
+        @extends .arrow
 
-.color-links a
+.colored-links a
     color: link-color
 
 .underlined
@@ -108,7 +134,7 @@ grid(min-column-width = 100px, gap = var(--unit))
     a
         @extends .underlined-on-hover
 
-.color-on-hover-links 
+.colored-on-hover-links 
     a:hover
         color: link-color
 
@@ -118,8 +144,10 @@ grid(min-column-width = 100px, gap = var(--unit))
 ///////////
 
 .default-list
-    list-style-type: disc
-    list-style-position: inside
+    padding-left: 0.8em
+    list-style-type: '– '
+    list-style-position: outside
+
     li + li
         margin-top: var(--semi-unit)
 
@@ -179,16 +207,15 @@ dl(row-gap=0.2em, term-width=max-content, weight=bold)
     grid-column-gap: 0.5em
     dt  
         font-weight: weight
-    dd
-        ul
-            line-height: 1.5
-        li::before
-            content: '–'
-            margin-right: 0.5em
 
 .dl
     dl()
 
+.vdl
+    dt
+        font-weight: bolder
+    dt:not(:first-child)
+        margin-top: var(--semi-unit)
 
 //////////
 // misc //
