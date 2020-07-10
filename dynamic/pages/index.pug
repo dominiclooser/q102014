@@ -10,13 +10,27 @@ block content
       .page-main.spacy-links
          
          +section('Use Cases')
+            ul.default-list
+               li Online books
+               li Blog posts
+               li Research articles
+               li Lists of entities (films, persons, cities etc.)
          
          +section('Implementation')
             ul.default-list
                li 
                   a(href='https://wikidata-elements.js.org/') wikidata-elements 
                   span  (Web components for embedding Wikidata into a website)
+               li Autocomplete tool for editors to easily insert wikidata ids
+               li Syntax to extend Markdown / plain text
+               li Parser, plugin for CMS and static page generators
+               li Web component for infobox
                li: a(href='https://en.wikipedia.org/wiki/Template:Wikidata') Wikidata in Wikipedia 
+
+         +section('Milestones')
+            ul.default-list
+               li Working example of a markdown text with an wikidata entity embedded. On click -> infobox.
+
 
          +section('Team')
             ul.default-list
